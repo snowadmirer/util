@@ -5,10 +5,19 @@ import shutil
 import os
 from time import sleep
 
-def download_from_url(url):
-    res = urllib.requests.urlopen(url).read()
+def get_url_content(url):
+    res = urllib.urlopen(url).read()
     return res
 
+def write_content(content, filepath):
+    with open(filepath, 'wb') as f:
+        f.write(content)
+
+def get_img_name_from_url(url):
+    res = re.findall('[-\w]+.[j]?p[ne]?g', url)
+    if res:
+        return res[0]
+    return None
  
 def download_baidu_pic(html,keyword, save_dir, index):
  
