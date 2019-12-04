@@ -6,9 +6,9 @@ def resize_with_pad(image, new_size, pad_val = 255):
     resize_width, resize_height = new_size
     height, width = image.shape[0], image.shape[1]
     scale = min(float(resize_height) / height, float(resize_width) / width)
-    image = cv2.resize(image, (int(width * scale), int(height * scale)))
+    new_height, new_width = int(height * scale), int(width * scale)
+    image = cv2.resize(image, (new_width, new_height))
 
-    new_height, new_width = image.shape[0], image.shape[1]
     pad_l = (resize_width - new_width) // 2
     pad_t = (resize_height - new_height) // 2
 
