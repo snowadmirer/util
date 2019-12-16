@@ -28,3 +28,14 @@ def rand_crop(image, max_width_rate, max_height_rate):
     x = 0 if crop_width == width else random.randint(0, width - crop_width)
     crop_image = image[y:y+crop_height,x:x+crop_width]
     return crop_image
+
+def get_image_paths(image_dir, post_fixes = ['.jpg', '.png', '.jpeg', '.bmp', '.webp', '.tif']):
+    img_paths = []
+    for filename in os.listdir(image_dir):
+        filepath = os.path.join(image_dir, filename)
+        for post_fix in post_fixes:
+            if filepath.lower().endswith(post_fix):
+                img_paths.append(filepath)
+        if os.path.isdir(filepath):
+            img_paths.extend(get_image_paths(filepath, post_fixes))
+    return img_paths
