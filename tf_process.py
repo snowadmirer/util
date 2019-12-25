@@ -3,14 +3,14 @@ def tf_resize_with_pad(img, target_height, target_width):
     target_w = tf.constant(target_width, dtype=tf.int32)
 
     input_shape = tf.cast(tf.shape(img), tf.int32)
-    h, w = input_shape[0], input_shape[1]
+    h, w = input_shape[1], input_shape[2]
 
     resize_scale = tf.cast(tf.minimum(target_w/w, target_h/h), tf.float32)
 
     new_w = tf.cast(resize_scale * tf.cast(w, tf.float32), tf.int32)
     new_h = tf.cast(resize_scale * tf.cast(h, tf.float32), tf.int32)
 
-    img = tf.expand_dims(img, axis=0)
+    #img = tf.expand_dims(img, axis=0)
     img = tf.image.resize(img, (new_h, new_w))
 
     pad_h = [(target_h - new_h) // 2, target_h - new_h - (target_h - new_h) // 2]
