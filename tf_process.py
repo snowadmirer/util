@@ -16,7 +16,5 @@ def tf_resize_with_pad(img, target_height, target_width):
     pad_h = [(target_h - new_h) // 2, target_h - new_h - (target_h - new_h) // 2]
     pad_w = [(target_w - new_w) // 2, target_w - new_w - (target_w - new_w) // 2]
     img = tf.pad(img, [[0, 0], pad_h, pad_w, [0,0]], constant_values=128)
-    img = tf.cast(img, tf.float32)
-    img /= 255.0
 
     return img
