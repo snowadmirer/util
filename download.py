@@ -3,6 +3,8 @@ import re
 import requests
 import shutil
 import os
+from urllib.parse import quote
+import string
 from time import sleep
 
 def get_url_content(url):
