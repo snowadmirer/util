@@ -8,6 +8,7 @@ import string
 from time import sleep
 
 def get_url_content(url):
+    url = quote(url, safe=string.printable)
     res = urllib.request.urlopen(url).read()
     return res
 
