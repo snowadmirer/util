@@ -6,7 +6,7 @@ import os
 from time import sleep
 
 def get_url_content(url):
-    res = urllib.urlopen(url).read()
+    res = urllib.request.urlopen(url).read()
     return res
 
 def write_content(content, filepath):
