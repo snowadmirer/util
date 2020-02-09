@@ -1,5 +1,5 @@
 #coding=utf-8
-import lxml
+from lxml import etree, objectify
 import cv2
 
 def read_voc_label(label_file):
