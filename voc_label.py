@@ -1,6 +1,7 @@
 #coding=utf-8
 from lxml import etree, objectify
 import cv2
+import os
 
 def read_voc_label(label_file):
     parser = etree.XMLParser(remove_blank_text=True)
@@ -29,8 +30,8 @@ def make_voc_label(filepath, height, width, bboxes, savepath):
                 E.folder(folder),
                 E.filename(filename),
                 E.size(
-                    E.width(800),
-                    E.height(600),
+                    E.width(width),
+                    E.height(height),
                     E.depth(3)
                 ),
 
