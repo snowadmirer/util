@@ -6,7 +6,13 @@ import os
 from urllib.parse import quote
 import string
 from time import sleep
-
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 def get_url_content(url):
     url = quote(url, safe=string.printable)
     res = urllib.request.urlopen(url).read()
@@ -47,6 +53,33 @@ def clean_dir(save_dir):
         shutil.rmtree(save_dir)
     os.mkdir(save_dir)
 
+def get_driver(web_tool):
+
+    option = webdriver.ChromeOptions()
+    #option.add_argument('headless')
+    option.add_argument('disable-infobars')
+    option.add_experimental_option('excludeSwitches', ['enable-logging'])
+    prefs = {
+        'profile.default_content_setting_values' : {
+            'images' : 2
+        }
+    }
+    #option.add_experimental_option('prefs',prefs)
+    driver = webdriver.Chrome(web_tool, options=option)
+    return driver
+
+def right_click_save(webdriver, xpath):
+    wait = WebDriverWait(driver,10)
+    img = wait.until(EC.element_to_be_clickable((By.TAG_NAME,'img')))
+    actions = ActionChains(driver)
+    actions.context_click(img)
+    actions.perform()
+
+    pyautogui.typewrite(['down', 'down'])
+    sleep(1)
+    pyautogui.typewrite(['enter', 'enter'])
+    sleep(1)
+    pyautogui.typewrite(['enter', 'enter'])
 if __name__ == '__main__':
     word = input("Input key word: ")
     save_dir = word
