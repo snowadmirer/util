@@ -13,10 +13,10 @@ def read_voc_label(label_file):
     labels = []
     for object in tree.findall('object'):
         bndbox = object.find('bndbox')
-        xmin = int(bndbox.find('xmin').text)
-        ymin = int(bndbox.find('ymin').text)
-        xmax = int(bndbox.find('xmax').text)
-        ymax = int(bndbox.find('ymax').text)
+        xmin = int(float(bndbox.find('xmin').text))
+        ymin = int(float(bndbox.find('ymin').text))
+        xmax = int(float(bndbox.find('xmax').text))
+        ymax = int(float(bndbox.find('ymax').text))
         name = object.find('name').text
         labels.append((xmin, ymin, xmax, ymax, name))
 
