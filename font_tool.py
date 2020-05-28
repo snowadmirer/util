@@ -1,5 +1,23 @@
 from PIL import Image, ImageFont, ImageDraw
 
+#codingt=utf-8
+# yum install fontforge-devel
+import fontforge
+
+if __name__ == '__main__':
+    font = fontforge.open('simhei.ttf')
+    print(dir(font).sort())
+    names = dir(font)
+    names.sort()
+    print(names)
+    print(font.glyphs())
+    for glyph in font.glyphs():
+        ucode = glyph.unicode
+        if ucode < 0:
+            continue
+        print(unichr(ucode))
+    print(len(font.glyphs()))
+
 def get_rotation_mat(image_size, angle, target_size=None, crop=True):
     width, height = image_size
     rotation_mat = cv2.getRotationMatrix2D((width/2.,height/2.),angle,1)
