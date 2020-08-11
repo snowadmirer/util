@@ -4,6 +4,9 @@
 * cv2.adaptiveThreshold
 * cv2.convexHull
 * cv2.floodFill
+* cv2.findContours
+* cv2.drawContours
+* cv2.contourArea
 
 ## cv2.boundingRect
 ```python
