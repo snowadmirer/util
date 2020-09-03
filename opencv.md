@@ -7,6 +7,7 @@
 * cv2.findContours
 * cv2.drawContours
 * cv2.contourArea
+* cv2.polylines
 
 ## cv2.boundingRect
 ```python
@@ -30,4 +31,10 @@ fill = image.copy()
 mask = cv2.copyMakeBorder(image, 1, 1, 1, 1, borderType=cv2.BORDER_CONSTANT, value=255)
 cv2.floodFill(fill, mask, seedPoint=(0,0), newVal=255)
 image |= ~fill
+```
+## cv2.polylines
+```python
+# cv2.polylines(img, pts, isClosed, color[, thickness[, lineType[, shift]]]) → None
+points = np.array([[910, 650], [206, 650], [458, 500], [696, 500]])
+cv2.polylines(img, [points], 1, (255, 0, 255))
 ```
