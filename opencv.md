@@ -38,3 +38,9 @@ image |= ~fill
 points = np.array([[910, 650], [206, 650], [458, 500], [696, 500]])
 cv2.polylines(img, [points], 1, (255, 0, 255))
 ```
+
+## cv2.putText
+```python
+#img	=	cv.putText(	img, text, org, fontFace, fontScale, color[, thickness[, lineType[, bottomLeftOrigin]]]	)
+```
+
