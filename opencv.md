@@ -44,3 +44,9 @@ cv2.polylines(img, [points], 1, (255, 0, 255))
 #img = cv.putText(img, text, org, fontFace, fontScale, color[, thickness[, lineType[, bottomLeftOrigin]]])
 ```
 
+## cv2.drawContours
+```
+cv2.drawContours(image, contours, contourIdx, color, thickness=None, lineType=None, hierarchy=None, maxLevel=None, offset=None)
+img=cv2.drawContours(img,contours,-1,(0,255,0),5)
+```
+
