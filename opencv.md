@@ -50,3 +50,12 @@ cv2.drawContours(image, contours, contourIdx, color, thickness=None, lineType=No
 img=cv2.drawContours(img,contours,-1,(0,255,0),5)
 ```
 
+##
+
+##  cv2.fillPoly
+```python
+area1 = np.array([[250, 200], [300, 100], [750, 800], [100, 1000]])
+area2 = np.array([[1000, 200], [1500, 200], [1500, 400], [1000, 400]])
+
+cv2.fillPoly(img, [area1, area2], (255, 255, 255))
+```
